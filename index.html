@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>3D图片文字翻转动画</title>
+		<style>
+			*{margin: 0 auto;padding: 0;user-select: none;}/*统配*/
+			.zhuti{width: 100%;max-width: 100rem;height: auto;text-align: center;}/*主体*/
+			.con{width: 83%;height: auto;text-align: center;}/*主体内容*/
+			.title{/*图片中间要显示的文字样式*/
+				width: 80%;text-align: center;z-index: 1;position: relative;padding: 20px;-webkit-animation:extend 5s linear infinite;font-family: KaiTi;}
+			@-webkit-keyframes extend/*文字的过度动画*/
+				{
+					0% {color: darkviolet;}
+					10% {color: #fa3380;}
+				    20% {color: #02b3e4;}
+				    30% {color: #02ccba;}
+				    40% {color: #a951ed;}
+				    50% {color: #ffa234;}
+					60% {color: #ff5483;}
+					70% {color: deepskyblue;}
+					80% {color: purple;}
+					90% {color: lightpink;}
+					100% {color: #fff;}
+				}
+			.flex{display: flex;justify-content:center;flex-wrap:wrap;}/*弹性布局*/
+			.item{/*弹性布局里每一个div元素*/
+				width:calc(25% - 2rem);height: 280px;background: green;margin: 16px;position: relative;border-radius: 10px;color: #fff;
+				transition: all 0.7s linear;transform-style: preserve-3d;cursor:pointer;}
+			@media screen and (max-width: 64rem) {/*响应式布局，1rem=16px*/
+				.con{width: 100%;}
+				.item{width: calc(33.333333% - 2rem);}
+			}
+			@media screen and (max-width: 48rem) {
+				.item{width: calc(50% - 2rem);}
+			}
+			@media screen and (max-width: 32rem) {
+				.item{width: 100%;margin: 0 0 2rem 0;}
+			}
+			.background{/*给图片添加一个透明灰图层*/
+				width: 100%;height: 100%;background-color: rgba(0,0,0,0.6);border-radius: 10px;position: absolute;
+				transform-style: preserve-3d;/*保留3d位置*/
+				perspective: 500px;/*距离*/
+				}
+			.text1{height: 100px;margin-top: 70px;padding: 32px;position: relative;font-size: 1.2rem;transform: translateZ(60px);/*Z轴的距离*/}/*正面显示的文字信息*/
+			.text1 p{font-size: 2rem;}/*正面标签p的字体大小，1rem等于16px*/
+			.text1 p:after {/*给p标签添加一个下划线*/
+				content: '';width: 4rem;height: 2px;background: #C6D4DF;display: block;margin: 0 auto;margin-top: 8px;margin-bottom: 12px;}
+			.block{/*反面显示的文字信息*/
+				transform-style: preserve-3d;/*保留3d位置*/
+				perspective: 500px;/*距离*/
+				width: 100%;height: 100%;background: linear-gradient(45deg,#F47,red);position: absolute;transform: rotateY(-180deg);border-radius: 10px;}
+			.item:hover{/*光标移入父级item，沿着父级Y轴旋转180度显示出背面*/
+				transform: rotateY(180deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="zhuti">
+			<h1 class="title">3D图片文字翻转动画</h1>
+			<div class="con">
+				<div class="flex">
+					<div class="item">
+						<div class="background">
+							<div class="text1">
+								<p>健康</p>
+								<span>饮食运动</span>
+							</div>
+						</div>
+						<div class="block">
+							<div class="text1">
+								合理的饮食，适量的运动，充足的睡眠。
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="background">
+							<div class="text1">
+								<p>快乐</p>
+								<span>笑口常开</span>
+							</div>
+						</div>
+						<div class="block">
+							<div class="text1">
+								释放所有压力，乐观的心态很重要，微笑吧！
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="background">
+							<div class="text1">
+								<p>财富</p>
+								<span>向上心态</span>
+							</div>
+						</div>
+						<div class="block">
+							<div class="text1">
+								财富实际上是一种心态，TA取决于你怎么想问题。
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="background">
+							<div class="text1">
+								<p>自由</p>
+								<span>心神向往</span>
+							</div>
+						</div>
+						<div class="block">
+							<div class="text1">
+								身心一致，做自己喜欢做的事情，才是真正的自由。
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="background">
+							<div class="text1">
+								<p>幸福</p>
+								<span>充满希望</span>
+							</div>
+						</div>
+						<div class="block">
+							<div class="text1">
+								永远相信，美化的事情正发生在我身上！
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="background">
+							<div class="text1">
+								<p>感恩</p>
+								<span>感恩生活</span>
+							</div>
+						</div>
+						<div class="block">
+							<div class="text1">
+								感恩我们所拥有的一切，这样或许会有跟多收获哦。
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="background">
+							<div class="text1">
+								<p>真诚</p>
+								<span>待人以诚</span>
+							</div>
+						</div>
+						<div class="block">
+							<div class="text1">
+								发自内心的真诚，对待身边所有的人！
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="background">
+							<div class="text1">
+								<p>拼搏</p>
+								<span>自强自立</span>
+							</div>
+						</div>
+						<div class="block">
+							<div class="text1">
+								爱拼才会赢，相信自己能做到，行动起来吧！
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
